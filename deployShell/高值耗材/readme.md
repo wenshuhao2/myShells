@@ -43,24 +43,77 @@
 > 可以手动修改脚本变量，修改默认应用端口。
 
 ## 资源存放路径
-data
-└─resources
-    ├─baseApp
-    │  ├─configFiles
-    │  └─dockerResources
-    │      ├─dockerCompose
-    │      ├─dockerDebs
-    │      ├─dockerImages
-    │      └─dockerXzImages
-    ├─rivaApp
-    │  ├─bdm-v2.9.4.17
-    │  ├─eureka2.9
-    │  ├─gateway2.9
-    │  ├─hvc-dept-v2.9.4.17
-    │  ├─log-service-v2.9.0
-    │  └─spd-print-v2.8
-    └─startShells
+>data
+>>resources
+>>>baseApp
+>>>
+>>>configFiles
+>>>
+>>> dockerResource
+>>> 
+>>>jdk-8u231-linux-x64.tar.gz
+>>>
+>>>ntp
+>>>
+>>> vimdebs
+>>> 
+>>rivaApp
+>>>bdm-2.9.4.16
+>>>
+>>>eureka-2.9.4.0
+>>>
+>>>gateway-2.9.4.0
+>>>
+>>>hvc-dept-2.9.4.16
+>>>
+>>>log-service-2.9.4.16
+>>>
+>>>spd-print-2.9.4.0
+>>>
+>>>webapp-2.9.4.16
+>>>
+>>startShells
+>>>deployJdk.sh
+>>>
+>>>initShells
+>>>
+>>>startBaseApp.sh
+>>>
+>>>startRivaApp.sh
    
 
 ## 账号密码
 > note:可以提取为环境变量配置，同时如果不配置则使用默认账号。
+### mysql
+- 数据库名称
+    默认是"ispd_"+"应用名称" eg:ispd_bdm/ispd_hvc/ispd_print
+- MYSQL_USER:root
+- MYSQL_PASSWORD:Rivamed@2018
+### rabbitmq
+- MQ_USER=rivamed
+- MQ_PASSWORD=rivamed
+### ftp
+- FTP_USER=uftp
+- FTP_PASSWORD=1234
+### redis && mongodb
+- 未开启认证
+    
+## 配置
+- application-deploy.properties
+    
+    TODO 数据库名称，默认是"ispd_"+"应用名称" eg:ispd_bdm/ispd_hvc/ispd_print
+- application-public.yml
+    
+    ftpPath: /
+- default_ng.conf
+    1. 网关IP为本机IP
+    2. web存放目录/data/nginx/html
+    3. ftp存放目录/home/uftp/recpserfile(文件存放目录)
+- ./eureka/config/application.yml
+    
+    配置mq信息，默认连接是使用guest用户，不配置会抛异常。
+- config.json
+    
+    CONFIG_JSON_PORT=8070
+
+
