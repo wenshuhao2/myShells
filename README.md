@@ -1,2 +1,6 @@
-# myShells
-shell脚本
+# shells
+shell脚本集合
+
+# 约定大于配置
+# 约定大于配置
+# 约定大于配置
